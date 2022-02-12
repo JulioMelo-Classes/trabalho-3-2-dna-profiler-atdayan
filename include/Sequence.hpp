@@ -1,11 +1,15 @@
 #ifndef SEQUENCE_HPP
 #define SEQUENCE_HPP
 #include <string>
+#include <vector>
 
 /*! Classe responsável pela amostra de DNA, essa classe engloba o processo de manipulação
     do arquivo de amostra, armazenamento da sequência e procura dos STR's buscados.
 */
 class Sequence {
+    private:
+        std::string m_sequence; //!< A sequência "ATCGTGAC" extraída do arquivo.
+
     public:
         /*! Processa o arquivo que contém a sequência de DNA a ser testada.
             @param filename O caminho para o arquivo.

@@ -7,5 +7,5 @@ add_executable( dna_profiler
                 src/Database.cpp
                 src/DNAProfiler.cpp
                 src/IOManager.cpp
-                #src/Sequence.cpp
+                src/Sequence.cpp
               )
