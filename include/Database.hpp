@@ -1,5 +1,6 @@
 #ifndef DATABASE_HPP
 #define DATABASE_HPP
+#include <map>
 #include <string>
 #include <vector>
 
@@ -8,6 +9,9 @@
     Ela é responsável por processar o arquivo CSV, extrair esses dados e exportar esse conteúdo.
 */
 class Database {
+    private:
+        std::map<std::string, std::vector<int>> m_rows; //!< Lista de entradas do arquivo csv.
+        std::vector<std::string> m_strs; //!< Lista dos STR's.
     public:
         /*! Processa o arquivo que contém a base de dados.
             @param filename O caminho para o arquivo.
