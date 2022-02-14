@@ -1,7 +1,7 @@
 #include <algorithm>
 #include <fstream>
+#include <numeric>
 #include <sstream>
-#include <utility>
 #include "Database.hpp"
 
 using namespace std;
@@ -37,9 +37,33 @@ bool Database::read_database(std::string filename) {
         std::transform(items.begin() + 1, items.end(), nums.begin(), [](string &s){
                     return std::stoi(s);
                 });
-        m_rows.insert(pair<string, vector<int>>(name, nums));
+        m_rows.push_back(pair<string, vector<int>>(name, nums));
         items.clear();
     }
 
     return true;
+}
+
+std::string Database::check_match(std::vector<int> str_count) {
+    vector<int> scores;
+    vector<int> score_final;
+    scores.resize(str_count.size());
+
+    for (auto &r : m_rows) {
+        for (int i = 0; i < r.second.size(); i++) {
+            scores[i] = std::max(r.second[i], str_count[i]) - std::min(r.second[i], str_count[i]);
+        }
+        score_final.push_back(std::accumulate(scores.begin(), scores.end(), 0));
+    }
+
+    int pos = std::distance(score_final.begin(), std::min_element(score_final.begin(),
+                score_final.end()));
+
+    string name = m_rows[pos].first;
+
+    return m_rows[pos].first;
+}
+
+vector<string>& Database::get_strs() {
+    return m_strs;
 }

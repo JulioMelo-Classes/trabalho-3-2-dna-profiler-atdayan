@@ -21,7 +21,7 @@ class Sequence {
             @param path A lista de STR's.
             @return Uma lista com a quantidade de cada STR.
         */
-        std::vector<int> count_strs(std::vector<std::string> str_list);
+        std::vector<int> count_strs(std::vector<std::string> &str_list);
 
 };
 
