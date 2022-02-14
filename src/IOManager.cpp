@@ -2,7 +2,10 @@
 #include "IOManager.hpp"
 
 void IOManager::print_result(std::string result) {
-    std::cout << result << "\n";
+    if (result.empty())
+        std::cout << "No matches found\n";
+    else
+        std::cout << result << "\n";
 }
 
 void IOManager::error(int code) {
